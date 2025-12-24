@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialHub - Connect & Share</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="new-design.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="logo">
+                <i class="fas fa-share-alt"></i>
+                <h1>SocialHub</h1>
+            </div>
+            <div class="spinner"></div>
+            <p>Loading your social experience...</p>
+        </div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div id="authModal" class="auth-modal">
+        <div class="auth-container">
+            <div class="auth-header">
+                <div class="logo">
+                    <i class="fas fa-share-alt"></i>
+                    <h1>SocialHub</h1>
+                </div>
+                <p>Connect with friends and share your moments</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Sign In</button>
+                <button class="auth-tab" data-tab="register">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label for="loginUsername">Username or Email</label>
+                    <input type="text" id="loginUsername" value="john_doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" value="password123" required>
+                </div>
+                <button type="submit" class="btn-primary">Sign In</button>
+                <div class="demo-accounts">
+                    <small>Demo accounts: john_doe, jane_smith, mike_wilson (password: password123)</small>
+                </div>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="registerUsername">Username</label>
+                    <input type="text" id="registerUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerFullName">Full Name</label>
+                    <input type="text" id="registerFullName">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+
+            <div id="authMessage" class="auth-message"></div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="main-app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-share-alt"></i>
+                    <span>SocialHub</span>
+                </div>
+
+                <div class="nav-search">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search users, posts...">
+                    </div>
+                </div>
+
+                <div class="nav-menu">
+                    <a href="#" class="nav-item active" data-page="home">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="trending">
+                        <i class="fas fa-fire"></i>
+                        <span>Trending</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                        <span class="notification-badge" id="notificationBadge"></span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </div>
+
+                <div class="nav-actions">
+                    <button class="btn-primary" id="createPostBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Post</span>
+                    </button>
+                    <div class="user-menu">
+                        <img id="userAvatar" class="user-avatar" alt="User">
+                        <div class="dropdown-menu" id="userDropdown">
+                            <a href="#" id="editProfileBtn">
+                                <i class="fas fa-edit"></i>
+                                Edit Profile
+                            </a>
+                            <a href="#" id="settingsBtn">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </a>
+                            <hr>
+                            <a href="#" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Page -->
+            <div class="page active" id="homePage">
+                <div class="content-container">
+                    <div class="feed-section">
+                        <div class="feed-header">
+                            <h2>Your Feed</h2>
+                            <button class="btn-secondary" id="refreshFeedBtn">
+                                <i class="fas fa-sync-alt"></i>
+                                Refresh
+                            </button>
+                        </div>
+                        <div id="feedPosts" class="posts-container">
+                            <!-- Posts will be loaded here -->
+                        </div>
+                        <div class="loading-more" id="feedLoading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>Loading posts...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Page -->
+            <div class="page" id="trendingPage">
+                <div class="content-container">
+                    <div class="trending-section">
+                        <div class="section-header">
+                            <h2>Trending Now</h2>
+                        </div>
+                        <div class="trending-hashtags">
+                            <h3>Popular Hashtags</h3>
+                            <div id="trendingHashtags" class="hashtags-grid">
+                                <!-- Hashtags will be loaded here -->
+                            </div>
+                        </div>
+                        <div class="trending-posts">
+                            <h3>Popular Posts</h3>
+                            <div id="trendingPosts" class="posts-container">
+                                <!-- Trending posts will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Page -->
+            <div class="page" id="notificationsPage">
+                <div class="content-container">
+                    <div class="notifications-section">
+                        <div class="section-header">
+                            <h2>Notifications</h2>
+                            <button class="btn-secondary" id="markAllReadBtn">
+                                <i class="fas fa-check-double"></i>
+                                Mark All Read
+                            </button>
+                        </div>
+                        <div id="notificationsList" class="notifications-list">
+                            <!-- Notifications will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div class="page" id="profilePage">
+                <div class="content-container">
+                    <div id="profileContent" class="profile-section">
+                        <!-- Profile content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Create Post Modal -->
+    <div id="createPostModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Post</h3>
+                <button class="modal-close" id="closeCreatePostModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="createPostForm" class="create-post-form">
+                <div class="form-group">
+                    <textarea id="postContent" placeholder="What's on your mind?" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="file" id="postMedia" accept="image/*,video/*" style="display: none;">
+                    <button type="button" class="btn-secondary" id="addMediaBtn">
+                        <i class="fas fa-camera"></i>
+                        Add Photo/Video
+                    </button>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="postLocation" placeholder="Add location (optional)">
+                </div>
+                <div id="mediaPreview" class="media-preview"></div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" id="cancelPostBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

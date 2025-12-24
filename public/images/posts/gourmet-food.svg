@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <defs>
+    <radialGradient id="plateGrad" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2937;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#111827;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)"/>
+  
+  <!-- Table -->
+  <ellipse cx="400" cy="350" rx="350" ry="40" fill="#374151"/>
+  
+  <!-- Plate -->
+  <ellipse cx="400" cy="200" rx="150" ry="20" fill="#d1d5db"/>
+  <ellipse cx="400" cy="195" rx="140" ry="18" fill="url(#plateGrad)"/>
+  
+  <!-- Main Dish - Wagyu Beef -->
+  <ellipse cx="380" cy="190" rx="40" ry="15" fill="#92400e"/>
+  <ellipse cx="380" cy="188" rx="35" ry="12" fill="#dc2626"/>
+  <ellipse cx="380" cy="186" rx="30" ry="10" fill="#ef4444"/>
+  
+  <!-- Truffle Risotto -->
+  <ellipse cx="420" cy="195" rx="25" ry="8" fill="#fbbf24"/>
+  <circle cx="415" cy="193" r="2" fill="#92400e"/>
+  <circle cx="425" cy="195" r="1.5" fill="#92400e"/>
+  <circle cx="420" cy="197" r="1" fill="#92400e"/>
+  
+  <!-- Vegetables -->
+  <ellipse cx="360" cy="200" rx="8" ry="4" fill="#22c55e"/>
+  <ellipse cx="440" cy="185" rx="6" ry="3" fill="#f97316"/>
+  <ellipse cx="370" cy="180" rx="5" ry="2" fill="#a855f7"/>
+  
+  <!-- Sauce -->
+  <path d="M350 200 Q360 195 370 200 Q365 205 350 200" fill="#92400e" opacity="0.7"/>
+  
+  <!-- Garnish -->
+  <path d="M390 175 L395 170 L400 175" fill="#22c55e"/>
+  <path d="M410 175 L415 170 L420 175" fill="#22c55e"/>
+  
+  <!-- Wine Glass -->
+  <path d="M150 150 L150 200 L160 200 L160 150 Q155 140 155 130 Q155 140 150 150" 
+        fill="none" stroke="#e5e7eb" stroke-width="2"/>
+  <ellipse cx="155" cy="135" rx="15" ry="8" fill="#dc2626" opacity="0.6"/>
+  <ellipse cx="155" cy="205" rx="20" ry="5" fill="#374151"/>
+  
+  <!-- Cutlery -->
+  <rect x="250" y="180" width="2" height="60" fill="#9ca3af"/>
+  <ellipse cx="251" cy="175" rx="3" ry="8" fill="#9ca3af"/>
+  
+  <rect x="270" y="180" width="2" height="60" fill="#9ca3af"/>
+  <path d="M268 175 L268 185 L274 185 L274 175 Q271 170 268 175" fill="#9ca3af"/>
+  
+  <!-- Candle -->
+  <rect x="600" y="120" width="8" height="40" fill="#fbbf24"/>
+  <ellipse cx="604" cy="115" rx="6" ry="3" fill="#f59e0b"/>
+  <path d="M604 110 Q604 105 604 110" stroke="#f97316" stroke-width="1" fill="none"/>
+  
+  <!-- Ambient lighting -->
+  <circle cx="400" cy="200" r="200" fill="none" stroke="#fbbf24" stroke-width="1" opacity="0.1"/>
+  <circle cx="400" cy="200" r="250" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.05"/>
+  
+  <text x="400" y="50" text-anchor="middle" fill="#f59e0b" font-size="28" font-weight="bold">Wagyu Truffle Risotto</text>
+  <text x="400" y="80" text-anchor="middle" fill="#d1d5db" font-size="16">Chef's Special - 5 Years in the Making</text>
+</svg>

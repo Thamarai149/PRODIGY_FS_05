@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="designGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="logoGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <rect width="800" height="400" fill="url(#designGrad)"/>
+  
+  <!-- Design Canvas -->
+  <rect x="100" y="50" width="600" height="300" rx="20" fill="white" stroke="#d1d5db" stroke-width="2"/>
+  
+  <!-- Logo Design -->
+  <circle cx="400" cy="150" r="60" fill="url(#logoGrad)"/>
+  <path d="M370 150 L400 120 L430 150 L400 180 Z" fill="white"/>
+  
+  <!-- Brand Name -->
+  <text x="400" y="240" text-anchor="middle" fill="#1f2937" font-size="32" font-weight="bold">EcoTech</text>
+  <text x="400" y="265" text-anchor="middle" fill="#6b7280" font-size="16">Sustainable Innovation</text>
+  
+  <!-- Color Palette -->
+  <circle cx="200" cy="300" r="15" fill="#22c55e"/>
+  <circle cx="240" cy="300" r="15" fill="#3b82f6"/>
+  <circle cx="280" cy="300" r="15" fill="#a855f7"/>
+  <circle cx="320" cy="300" r="15" fill="#f59e0b"/>
+  
+  <!-- Typography Samples -->
+  <text x="500" y="280" fill="#1f2937" font-size="18" font-weight="bold">Aa Bb Cc</text>
+  <text x="500" y="300" fill="#6b7280" font-size="14">Typography Sample</text>
+  
+  <!-- Design Tools -->
+  <rect x="50" y="100" width="30" height="200" rx="5" fill="#4b5563"/>
+  <circle cx="65" cy="120" r="8" fill="#ef4444"/>
+  <circle cx="65" cy="150" r="8" fill="#22c55e"/>
+  <circle cx="65" cy="180" r="8" fill="#3b82f6"/>
+  <rect x="60" y="200" width="10" height="10" fill="#a855f7"/>
+  
+  <text x="400" y="30" text-anchor="middle" fill="#1f2937" font-size="20" font-weight="bold">Brand Identity Design</text>
+</svg>

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexusHub - Ultimate Social Media Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="new-design.css">
+</head>
+<body>
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal" style="display: flex;">
+        <div class="modal-content">
+            <div class="auth-container">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h1 style="font-size: 3rem; background: linear-gradient(135deg, #3b82f6 0%, #a855f7 50%, #22c55e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0; font-weight: 900; letter-spacing: -2px;">
+                        <i class="fas fa-rocket" style="animation: pulse 2s ease-in-out infinite;"></i> NexusHub
+                    </h1>
+                    <p style="color: #94a3b8; margin-top: 12px; font-size: 18px; font-weight: 500;">The Ultimate Social Experience</p>
+                </div>
+                
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchTab('login')">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <button class="auth-tab" onclick="switchTab('register')">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <h2>Welcome Back</h2>
+                    <div class="form-group">
+                        <input type="text" id="loginUsername" placeholder="Username or Email" value="john_doe" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="loginPassword" placeholder="Password" value="password123" required>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">
+                        <i class="fas fa-rocket"></i>
+                        Launch Into NexusHub
+                    </button>
+                </form>
+                
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form">
+                    <h2>Join the Revolution</h2>
+                    <div class="form-group">
+                        <input type="text" id="registerUsername" placeholder="Choose Username" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="registerEmail" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="registerFullName" placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="registerPassword" placeholder="Create Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">
+                        <i class="fas fa-stars"></i>
+                        Create Account
+                    </button>
+                </form>
+                
+                <div id="message" style="margin-top: 20px; padding: 16px; border-radius: 12px; display: none; backdrop-filter: blur(10px);"></div>
+                
+                <div style="text-align: center; margin-top: 24px; font-size: 14px; color: #64748b;">
+                    <i class="fas fa-info-circle"></i> Demo: john_doe / password123
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main App -->
+    <div id="mainApp" style="display: none;">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-rocket"></i>
+                    NexusHub
+                </div>
+                
+                <div class="nav-search">
+                    <input type="text" placeholder="Discover amazing content...">
+                    <i class="fas fa-search"></i>
+                </div>
+                
+                <div class="nav-menu">
+                    <a href="#" class="nav-item active">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-fire"></i>
+                        <span>Trending</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                        <span class="notification-badge">5</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Profile</span>
+                    </a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Create
+                    </button>
+                    <div class="user-menu">
+                        <img id="userAvatar" src="/images/users/user1.svg" alt="User" class="user-avatar">
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page active">
+                <div class="feed-container">
+                    <div class="feed-header">
+                        <h2>
+                            <i class="fas fa-stream"></i>
+                            Your Nexus Feed
+                        </h2>
+                    </div>
+                    
+                    <div class="posts-container">
+                        <!-- Featured Post -->
+                        <div class="post">
+                            <div class="post-header">
+                                <img src="/images/users/user4.svg" alt="alex_dev" class="post-avatar">
+                                <div class="post-user-info">
+                                    <div class="post-user-name">
+                                        Alex Rodriguez
+                                        <i class="fas fa-check-circle verified-badge"></i>
+                                        <span class="post-username">@alex_dev</span>
+                                    </div>
+                                    <div class="post-time">2h ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="post-content">
+                                🚀 Just launched my new AI-powered web app! It uses machine learning to predict user behavior and optimize UX in real-time. The future is here! <span class="hashtag">#AI</span> <span class="hashtag">#MachineLearning</span> <span class="hashtag">#WebDev</span> <span class="hashtag">#Innovation</span>
+                            </div>
+                            
+                            <div class="post-media">
+                                <img src="/images/posts/ai-dashboard.svg" alt="AI Dashboard">
+                            </div>
+                            
+                            <div class="post-actions">
+                                <div class="post-action">
+                                    <i class="far fa-comment"></i>
+                                    <span>24</span>
+                                </div>
+                                <div class="post-action liked">
+                                    <i class="fas fa-heart"></i>
+                                    <span>156</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="fas fa-retweet"></i>
+                                    <span>43</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-share-square"></i>
+                                    <span>12</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Creative Post -->
+                        <div class="post">
+                            <div class="post-header">
+                                <img src="/images/users/user2.svg" alt="jane_smith" class="post-avatar">
+                                <div class="post-user-info">
+                                    <div class="post-user-name">
+                                        Jane Smith
+                                        <i class="fas fa-check-circle verified-badge"></i>
+                                        <span class="post-username">@jane_smith</span>
+                                    </div>
+                                    <div class="post-time">4h ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="post-content">
+                                ✨ New brand identity design for a sustainable tech startup! Love how the organic shapes represent growth and innovation. What do you think? <span class="hashtag">#Design</span> <span class="hashtag">#Branding</span> <span class="hashtag">#Sustainability</span>
+                            </div>
+                            
+                            <div class="post-media">
+                                <img src="/images/posts/design-work.svg" alt="Brand Design">
+                            </div>
+                            
+                            <div class="post-actions">
+                                <div class="post-action">
+                                    <i class="far fa-comment"></i>
+                                    <span>18</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-heart"></i>
+                                    <span>89</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="fas fa-retweet"></i>
+                                    <span>27</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-share-square"></i>
+                                    <span>8</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tech Post -->
+                        <div class="post">
+                            <div class="post-header">
+                                <img src="/images/users/user1.svg" alt="john_doe" class="post-avatar">
+                                <div class="post-user-info">
+                                    <div class="post-user-name">
+                                        John Doe
+                                        <i class="fas fa-check-circle verified-badge"></i>
+                                        <span class="post-username">@john_doe</span>
+                                    </div>
+                                    <div class="post-time">6h ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="post-content">
+                                🔥 Mind-blowing setup for my new home office! Triple monitor setup with RGB everything. Productivity level: MAXIMUM! Who else is obsessed with their workspace? <span class="hashtag">#Setup</span> <span class="hashtag">#HomeOffice</span> <span class="hashtag">#Productivity</span>
+                            </div>
+                            
+                            <div class="post-media">
+                                <img src="/images/posts/tech-setup.svg" alt="Gaming Setup">
+                            </div>
+                            
+                            <div class="post-actions">
+                                <div class="post-action">
+                                    <i class="far fa-comment"></i>
+                                    <span>31</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-heart"></i>
+                                    <span>124</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="fas fa-retweet"></i>
+                                    <span>19</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-share-square"></i>
+                                    <span>15</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Travel Post -->
+                        <div class="post">
+                            <div class="post-header">
+                                <img src="/images/users/user3.svg" alt="mike_wilson" class="post-avatar">
+                                <div class="post-user-info">
+                                    <div class="post-user-name">
+                                        Mike Wilson
+                                        <i class="fas fa-check-circle verified-badge"></i>
+                                        <span class="post-username">@mike_wilson</span>
+                                    </div>
+                                    <div class="post-time">8h ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="post-content">
+                                🌅 Sunrise over the Swiss Alps never gets old! Currently at 3,000m altitude and the view is absolutely breathtaking. Nature is the best artist! <span class="hashtag">#Travel</span> <span class="hashtag">#Switzerland</span> <span class="hashtag">#Mountains</span> <span class="hashtag">#Sunrise</span>
+                            </div>
+                            
+                            <div class="post-media">
+                                <img src="/images/posts/mountain-view.svg" alt="Swiss Alps">
+                            </div>
+                            
+                            <div class="post-actions">
+                                <div class="post-action">
+                                    <i class="far fa-comment"></i>
+                                    <span>42</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-heart"></i>
+                                    <span>287</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="fas fa-retweet"></i>
+                                    <span>56</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-share-square"></i>
+                                    <span>23</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Food Post -->
+                        <div class="post">
+                            <div class="post-header">
+                                <img src="/images/users/user5.svg" alt="chef_marco" class="post-avatar">
+                                <div class="post-user-info">
+                                    <div class="post-user-name">
+                                        Chef Marco
+                                        <i class="fas fa-check-circle verified-badge"></i>
+                                        <span class="post-username">@chef_marco</span>
+                                    </div>
+                                    <div class="post-time">12h ago</div>
+                                </div>
+                            </div>
+                            
+                            <div class="post-content">
+                                👨‍🍳 Tonight's special: Wagyu beef with truffle risotto and seasonal vegetables. 5 years of perfecting this recipe and it's finally ready! <span class="hashtag">#Culinary</span> <span class="hashtag">#Wagyu</span> <span class="hashtag">#Truffle</span> <span class="hashtag">#Gourmet</span>
+                            </div>
+                            
+                            <div class="post-media">
+                                <img src="/images/posts/gourmet-food.svg" alt="Gourmet Dish">
+                            </div>
+                            
+                            <div class="post-actions">
+                                <div class="post-action">
+                                    <i class="far fa-comment"></i>
+                                    <span>67</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-heart"></i>
+                                    <span>234</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="fas fa-retweet"></i>
+                                    <span>34</span>
+                                </div>
+                                <div class="post-action">
+                                    <i class="far fa-share-square"></i>
+                                    <span>18</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Welcome Message -->
+        <div id="welcomeMessage" style="position: fixed; bottom: 32px; right: 32px; background: rgba(30, 41, 59, 0.95); backdrop-filter: blur(20px); padding: 24px; border-radius: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); max-width: 350px; display: none; border: 1px solid rgba(59, 130, 246, 0.3);">
+            <h3 style="background: linear-gradient(135deg, #3b82f6 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; font-size: 20px; font-weight: 800;">
+                <i class="fas fa-rocket"></i> Welcome to NexusHub!
+            </h3>
+            <p style="font-size: 15px; color: #cbd5e1; margin-bottom: 16px; line-height: 1.5;">
+                You're now connected as <strong id="currentUser" style="color: #3b82f6;"></strong>! 
+            </p>
+            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 20px;">
+                ✨ Experience the ultimate social platform with cutting-edge design and features!
+            </p>
+            <button onclick="logout()" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; padding: 12px 20px; border-radius: 12px; cursor: pointer; font-size: 14px; width: 100%; font-weight: 600; transition: all 0.3s ease;">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        let currentUser = null;
+        
+        function switchTab(tab) {
+            // Update tabs
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update forms
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            document.getElementById(tab + 'Form').classList.add('active');
+        }
+        
+        function showMessage(text, type) {
+            const msg = document.getElementById('message');
+            msg.textContent = text;
+            msg.style.display = 'block';
+            
+            if (type === 'success') {
+                msg.style.background = 'rgba(34, 197, 94, 0.2)';
+                msg.style.color = '#22c55e';
+                msg.style.border = '1px solid rgba(34, 197, 94, 0.4)';
+            } else if (type === 'error') {
+                msg.style.background = 'rgba(239, 68, 68, 0.2)';
+                msg.style.color = '#ef4444';
+                msg.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+            } else {
+                msg.style.background = 'rgba(59, 130, 246, 0.2)';
+                msg.style.color = '#3b82f6';
+                msg.style.border = '1px solid rgba(59, 130, 246, 0.4)';
+            }
+            
+            setTimeout(() => {
+                msg.style.display = 'none';
+            }, 5000);
+        }
+        
+        function showToast(text, type) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i> ${text}`;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100%)';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+        
+        function showMainApp(user) {
+            document.getElementById('authModal').style.display = 'none';
+            document.getElementById('mainApp').style.display = 'block';
+            document.getElementById('currentUser').textContent = user.username;
+            currentUser = user;
+            
+            // Show welcome message
+            setTimeout(() => {
+                document.getElementById('welcomeMessage').style.display = 'block';
+            }, 1500);
+            
+            // Hide welcome message after 12 seconds
+            setTimeout(() => {
+                const welcome = document.getElementById('welcomeMessage');
+                if (welcome) {
+                    welcome.style.opacity = '0';
+                    welcome.style.transform = 'translateY(20px)';
+                    setTimeout(() => welcome.style.display = 'none', 500);
+                }
+            }, 12000);
+        }
+        
+        function logout() {
+            localStorage.removeItem('token');
+            currentUser = null;
+            document.getElementById('authModal').style.display = 'flex';
+            document.getElementById('mainApp').style.display = 'none';
+            document.getElementById('welcomeMessage').style.display = 'none';
+            
+            // Reset forms
+            document.getElementById('loginUsername').value = 'john_doe';
+            document.getElementById('loginPassword').value = 'password123';
+            document.getElementById('registerUsername').value = '';
+            document.getElementById('registerEmail').value = '';
+            document.getElementById('registerFullName').value = '';
+            document.getElementById('registerPassword').value = '';
+            
+            switchTab('login');
+            showToast('Successfully logged out! See you soon! 👋', 'success');
+        }
+        
+        // Check if already logged in
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            if (token) {
+                // Validate token
+                fetch('/api/auth/me', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showMainApp(data.user);
+                    } else {
+                        localStorage.removeItem('token');
+                    }
+                })
+                .catch(() => {
+                    localStorage.removeItem('token');
+                });
+            }
+        }
+        
+        // Login form
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            showMessage('🚀 Launching into NexusHub...', 'info');
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ login: username, password: password })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    localStorage.setItem('token', data.token);
+                    showMessage('🎉 Welcome to the future of social media!', 'success');
+                    setTimeout(() => showMainApp(data.user), 1500);
+                } else {
+                    showMessage(data.message || 'Login failed', 'error');
+                }
+            } catch (error) {
+                showMessage('Network error. Please try again.', 'error');
+            }
+        });
+        
+        // Register form
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('registerUsername').value;
+            const email = document.getElementById('registerEmail').value;
+            const fullName = document.getElementById('registerFullName').value;
+            const password = document.getElementById('registerPassword').value;
+            
+            showMessage('✨ Creating your NexusHub account...', 'info');
+            
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        username: username, 
+                        email: email, 
+                        full_name: fullName, 
+                        password: password 
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    localStorage.setItem('token', data.token);
+                    showMessage('🎊 Account created! Welcome to NexusHub!', 'success');
+                    setTimeout(() => showMainApp(data.user), 1500);
+                } else {
+                    showMessage(data.message || 'Registration failed', 'error');
+                }
+            } catch (error) {
+                showMessage('Network error. Please try again.', 'error');
+            }
+        });
+        
+        // Add interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate post actions
+            document.querySelectorAll('.post-action').forEach(action => {
+                action.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    if (this.querySelector('.fa-heart')) {
+                        if (this.classList.contains('liked')) {
+                            this.classList.remove('liked');
+                            const count = this.querySelector('span');
+                            count.textContent = parseInt(count.textContent) - 1;
+                            showToast('Removed from favorites', 'info');
+                        } else {
+                            this.classList.add('liked');
+                            const count = this.querySelector('span');
+                            count.textContent = parseInt(count.textContent) + 1;
+                            
+                            // Heart animation
+                            const heart = this.querySelector('i');
+                            heart.style.transform = 'scale(1.5)';
+                            heart.style.color = '#ef4444';
+                            setTimeout(() => {
+                                heart.style.transform = 'scale(1)';
+                            }, 300);
+                            
+                            showToast('Added to favorites! ❤️', 'success');
+                        }
+                    } else if (this.querySelector('.fa-comment')) {
+                        showToast('Comments feature coming soon! 💬', 'info');
+                    } else if (this.querySelector('.fa-retweet')) {
+                        showToast('Shared successfully! 🔄', 'success');
+                    } else if (this.querySelector('.fa-share-square')) {
+                        showToast('Link copied to clipboard! 📋', 'success');
+                    }
+                });
+            });
+            
+            // Parallax effect for posts
+            window.addEventListener('scroll', () => {
+                const posts = document.querySelectorAll('.post');
+                posts.forEach((post, index) => {
+                    const rect = post.getBoundingClientRect();
+                    const speed = 0.5;
+                    const yPos = -(rect.top * speed);
+                    post.style.transform = `translateY(${yPos * 0.1}px)`;
+                });
+            });
+        });
+        
+        // Initialize
+        checkAuth();
+    </script>
+</body>
+</html>

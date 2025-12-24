@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f3f4f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6b7280;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="800" height="400" fill="url(#skyGrad)"/>
+  
+  <!-- Sun -->
+  <circle cx="150" cy="80" r="40" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="150" cy="80" r="50" fill="none" stroke="#fbbf24" stroke-width="2" opacity="0.4"/>
+  
+  <!-- Mountains -->
+  <polygon points="0,250 200,150 400,200 600,120 800,180 800,400 0,400" fill="url(#mountainGrad)"/>
+  <polygon points="100,280 300,180 500,220 700,160 800,200 800,400 0,400" fill="#4b5563" opacity="0.7"/>
+  <polygon points="200,320 400,220 600,260 800,240 800,400 0,400" fill="#374151" opacity="0.8"/>
+  
+  <!-- Snow Caps -->
+  <polygon points="180,160 220,160 200,150" fill="white"/>
+  <polygon points="380,210 420,210 400,200" fill="white"/>
+  <polygon points="580,130 620,130 600,120" fill="white"/>
+  
+  <!-- Clouds -->
+  <ellipse cx="300" cy="100" rx="40" ry="20" fill="white" opacity="0.6"/>
+  <ellipse cx="320" cy="95" rx="30" ry="15" fill="white" opacity="0.6"/>
+  <ellipse cx="500" cy="120" rx="35" ry="18" fill="white" opacity="0.5"/>
+  
+  <!-- Trees -->
+  <polygon points="50,350 60,320 70,350" fill="#22c55e"/>
+  <rect x="58" y="350" width="4" height="20" fill="#92400e"/>
+  
+  <polygon points="120,340 135,300 150,340" fill="#16a34a"/>
+  <rect x="132" y="340" width="6" height="25" fill="#92400e"/>
+  
+  <!-- Lake -->
+  <ellipse cx="400" cy="350" rx="200" ry="30" fill="#3b82f6" opacity="0.6"/>
+  
+  <text x="400" y="30" text-anchor="middle" fill="white" font-size="24" font-weight="bold">Swiss Alps Sunrise</text>
+</svg>
