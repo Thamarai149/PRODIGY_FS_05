@@ -230,6 +230,10 @@ function updateUserUI() {
     const userAvatar = document.getElementById('userAvatar');
     if (currentUser.profile_picture) {
         userAvatar.src = currentUser.profile_picture;
+    } else {
+        // Use default user avatar based on user ID or username
+        const userNum = (currentUser.id % 5) + 1;
+        userAvatar.src = `/images/users/user${userNum}.svg`;
     }
     userAvatar.alt = currentUser.username;
 }
@@ -660,7 +664,7 @@ function createPostElement(post) {
     
     postEl.innerHTML = `
         <div class="post-header">
-            <img src="${post.profile_picture || '/api/placeholder/48/48'}" alt="${post.username}" class="post-avatar">
+            <img src="${post.profile_picture || getDefaultAvatar(post.user_id || post.username)}" alt="${post.username}" class="post-avatar">
             <div class="post-user-info">
                 <div class="post-user-name">
                     ${post.full_name || post.username}
@@ -849,7 +853,7 @@ async function loadNotifications() {
                 const item = document.createElement('div');
                 item.className = `notification-item ${!notification.is_read ? 'unread' : ''}`;
                 item.innerHTML = `
-                    <img src="${notification.related_profile_picture || '/api/placeholder/40/40'}" 
+                    <img src="${notification.related_profile_picture || getDefaultAvatar(notification.related_user_id)}" 
                          alt="${notification.related_username}" class="notification-avatar">
                     <div class="notification-content">
                         <div class="notification-message">${notification.message}</div>
@@ -904,6 +908,13 @@ async function markAllNotificationsRead() {
     } catch (error) {
         console.error('Mark all notifications read error:', error);
     }
+}
+
+// Helper function to get default avatar
+function getDefaultAvatar(userId) {
+    // Use a simple hash of the userId to determine which avatar to use
+    const avatarNum = ((userId || 1) % 5) + 1;
+    return `/images/users/user${avatarNum}.svg`;
 }
 
 // Utility functions
@@ -984,7 +995,7 @@ function renderProfile(user) {
         <div class="profile-header">
             ${user.cover_photo ? `<div class="profile-cover" style="background-image: url(${user.cover_photo})"></div>` : ''}
             <div class="profile-info">
-                <img src="${user.profile_picture || '/api/placeholder/120/120'}" alt="${user.username}" class="profile-avatar">
+                <img src="${user.profile_picture || getDefaultAvatar(user.id)}" alt="${user.username}" class="profile-avatar">
                 <div class="profile-name">
                     ${user.full_name || user.username}
                     ${user.verified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}

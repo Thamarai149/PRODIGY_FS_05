@@ -53,6 +53,28 @@ io.on('connection', (socket) => {
 // Make io available to routes
 app.set('io', io);
 
+// Placeholder image route
+app.get('/api/placeholder/:width/:height', (req, res) => {
+    const { width, height } = req.params;
+    const size = Math.min(parseInt(width) || 100, parseInt(height) || 100);
+    
+    // Generate a simple SVG placeholder
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
+        <defs>
+            <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#6b7280;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#4b5563;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <rect width="${size}" height="${size}" fill="url(#grad)"/>
+        <circle cx="${size/2}" cy="${size/2.5}" r="${size/6}" fill="white" opacity="0.8"/>
+        <path d="M${size/4} ${size*0.75} Q${size/4} ${size*0.6} ${size/2} ${size*0.6} Q${size*0.75} ${size*0.6} ${size*0.75} ${size*0.75} L${size*0.75} ${size*0.85} Q${size*0.75} ${size*0.9} ${size*0.7} ${size*0.9} L${size*0.3} ${size*0.9} Q${size/4} ${size*0.9} ${size/4} ${size*0.85} Z" fill="white" opacity="0.8"/>
+    </svg>`;
+    
+    res.setHeader('Content-Type', 'image/svg+xml');
+    res.send(svg);
+});
+
 // Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));

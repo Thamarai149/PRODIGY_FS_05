@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .image-test {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
+        .image-test img {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        .image-test.error img {
+            border-color: #ff0000;
+        }
+        .image-test.success img {
+            border-color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Loading Test</h1>
+    
+    <div class="test-section">
+        <h2>User Images</h2>
+        <div class="image-test">
+            <img src="/images/users/user1.svg" alt="User 1" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>user1.svg</p>
+        </div>
+        <div class="image-test">
+            <img src="/images/users/user2.svg" alt="User 2" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>user2.svg</p>
+        </div>
+        <div class="image-test">
+            <img src="/images/users/user3.svg" alt="User 3" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>user3.svg</p>
+        </div>
+        <div class="image-test">
+            <img src="/images/users/user4.svg" alt="User 4" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>user4.svg</p>
+        </div>
+        <div class="image-test">
+            <img src="/images/users/user5.svg" alt="User 5" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>user5.svg</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Post Images</h2>
+        <div class="image-test">
+            <img src="/images/posts/ai-dashboard.svg" alt="AI Dashboard" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>ai-dashboard.svg</p>
+        </div>
+        <div class="image-test">
+            <img src="/images/posts/design-work.svg" alt="Design Work" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>design-work.svg</p>
+        </div>
+        <div class="image-test">
+            <img src="/images/posts/gourmet-food.svg" alt="Gourmet Food" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>gourmet-food.svg</p>
+        </div>
+        <div class="image-test">
+            <img src="/images/posts/mountain-view.svg" alt="Mountain View" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>mountain-view.svg</p>
+        </div>
+        <div class="image-test">
+            <img src="/images/posts/tech-setup.svg" alt="Tech Setup" onload="this.parentElement.classList.add('success')" onerror="this.parentElement.classList.add('error')">
+            <p>tech-setup.svg</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Debug Info</h2>
+        <p><strong>Current URL:</strong> <span id="currentUrl"></span></p>
+        <p><strong>Base URL:</strong> <span id="baseUrl"></span></p>
+        <button onclick="testImagePaths()">Test Image Paths</button>
+        <div id="testResults"></div>
+    </div>
+    
+    <script>
+        document.getElementById('currentUrl').textContent = window.location.href;
+        document.getElementById('baseUrl').textContent = window.location.origin;
+        
+        function testImagePaths() {
+            const results = document.getElementById('testResults');
+            results.innerHTML = '<h3>Testing image paths...</h3>';
+            
+            const imagePaths = [
+                '/images/users/user1.svg',
+                '/images/posts/ai-dashboard.svg'
+            ];
+            
+            imagePaths.forEach(path => {
+                fetch(path)
+                    .then(response => {
+                        const status = response.ok ? 'SUCCESS' : 'FAILED';
+                        const color = response.ok ? 'green' : 'red';
+                        results.innerHTML += `<p style="color: ${color};">${path}: ${status} (${response.status})</p>`;
+                    })
+                    .catch(error => {
+                        results.innerHTML += `<p style="color: red;">${path}: ERROR - ${error.message}</p>`;
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
